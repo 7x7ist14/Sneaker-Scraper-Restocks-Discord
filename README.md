@@ -1,5 +1,6 @@
 # Sneaker-Scraper-Restocks-Discord
-A Scraper for Prices on Restocks
+A Scraper for all prices and sizes of a sneaker on the reselling website Restocks.
+The scraper will return a message in your discord chanel with a list of all sizes and prices + the product url for Restocks, StockX and Hypeboost.
 
 # Requirements:
 1. Check if you have all the needed python libraries.
