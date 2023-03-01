@@ -13,6 +13,8 @@ The scraper will return a message in your discord chanel with a list of all size
 
 --> to install them just write the pip install... command in your Terminal.
 
+
+# Chrome Driver
 Please Check that you have the same version of the chrome driver in the folder with the scraper files as your main chrome is!
 To check that go to chrome://settings/help and click on "About Chrome".
 After that go to https://chromedriver.chromium.org/downloads and download the right version.
