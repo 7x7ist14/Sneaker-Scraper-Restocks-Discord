@@ -14,9 +14,10 @@ The scraper will return a message in your discord chanel with a list of all size
 --> to install them just write the pip install... command in your Terminal.
 
 PLS Check that you have the same version of the chrome driver in the folder with the scraper files as your main chrome is!
-To check that go to "chrome://settings/help" and click on "About Chrome".
+To check that go to chrome://settings/help and click on "About Chrome".
 After that go to https://chromedriver.chromium.org/downloads and download the right version.
-If your version isn't the same as in the Folder, just download your
+If your version isn't the same as in the Folder, just download your version and replace the chrome-driver file.
+In the folder is the version: ChromeDriver 110.0.5481.77
 
 2. Open "Config" file and input your Discord Bot Token.
 
