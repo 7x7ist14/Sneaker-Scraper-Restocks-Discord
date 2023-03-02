@@ -30,7 +30,7 @@ In the folder is the version: ChromeDriver 110.0.5481.77
 
 
 The Scraper will now send you all listed sizes and their prices in the discord channel.
-Also the Restocks Product URL is in the blue title.
+Also the Restocks product URL is in the blue title.
 At the bottom of the discord message you can also find the StockX and Restocks Product URL to the Scraped Product.
 
 # Return Message Example:
