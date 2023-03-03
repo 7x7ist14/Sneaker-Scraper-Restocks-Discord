@@ -62,7 +62,7 @@ async def on_message(message):
           inline=False
         )
         embed.add_field(
-          name='Restocks',
+          name='Hypeboost',
           value=f"[Open Product on Hypeboost]({hypeboost_url_output})",
           inline=False
         )
