@@ -36,4 +36,4 @@ At the bottom of the discord message you can also find the StockX and Restocks P
 # Return Message Example:
 The return message looks like this:
 
-![Restocks-message-github](https://user-images.githubusercontent.com/103487648/221952547-676ef432-cced-4e03-9970-c0ac6a80f4c8.png)
+![image](https://user-images.githubusercontent.com/103487648/223551832-0661f335-4eb0-4756-9589-d2adcc6f1ef4.png)
