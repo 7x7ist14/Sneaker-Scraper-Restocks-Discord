@@ -1,6 +1,6 @@
 import discord
 import restocks_main
-from config import TOKEN
+from config import TOKEN, CHANNEL_NAME
 from discord.ext import commands
 
 restocks_url = restocks_main.restocks_url
@@ -13,6 +13,9 @@ sneakit_url = restocks_main.sneakit_product_url
 
 if not TOKEN:
     raise ValueError("The BOt-Token was not included in the config.py file")
+
+if not CHANNEL_NAME:
+    raise ValueError("The Channel-name was not included in the config.py file")
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
@@ -28,47 +31,48 @@ async def on_message(message):
       return
   message_content = message.content.lower()
 
-  if message.content.startswith(f'$restocks'): #(Prefix "$") SKU for scraping
+  if message.channel.name == CHANNEL_NAME:
+    if message.content.startswith(f'$restocks'): #(Prefix "$") SKU for scraping
 
-    if f'$restocks' in message_content:
-        await message.channel.send("Scraping...")
-        SKU = message_content.replace('$restocks ', '') # everything after prefix is the search (SKU)
-        restocks_sizes_output = restocks_sizes(SKU)
-        restocks_product_output = restocks_url(SKU)
-        restocks_image_output = restocks_pic(SKU,restocks_url)
-        restocks_title_output = restocks_title(SKU)
-        stockx_url_output = stockx_url(SKU)
-        hypeboost_url_output = hypeboost_url(SKU)
-        sneakit_url_output = sneakit_url(SKU)
+      if f'$restocks' in message_content:
+          await message.channel.send("Scraping...")
+          SKU = message_content.replace('$restocks ', '') # everything after prefix is the search (SKU)
+          restocks_sizes_output = restocks_sizes(SKU)
+          restocks_product_output = restocks_url(SKU)
+          restocks_image_output = restocks_pic(SKU,restocks_url)
+          restocks_title_output = restocks_title(SKU)
+          stockx_url_output = stockx_url(SKU)
+          hypeboost_url_output = hypeboost_url(SKU)
+          sneakit_url_output = sneakit_url(SKU)
 
-        embed = discord.Embed(
-          title=restocks_title_output,
-          url=restocks_product_output,
-          color=0x607d8b
-        )
-        embed.set_author(
-          name="Restocks Scraper",
-          url="https://twitter.com/jakobaio",
-          icon_url= "https://www.reklamation24.de/img/content/marken/original_6710_1.gif"
+          embed = discord.Embed(
+            title=restocks_title_output,
+            url=restocks_product_output,
+            color=0x607d8b
           )
-        embed.set_thumbnail(
-          url=restocks_image_output
-        )
-        embed.add_field(
-          name="Prices:",
-          value=restocks_sizes_output
-        )
-        embed.add_field(
-          name="Open Product on:",
-          value=f"[[StockX]]({stockx_url_output})      " f"[[Sneakit]]({sneakit_url_output})      " f"[[Restocks]]({restocks_product_output})      " f"[[Hypeboost]]({hypeboost_url_output})      ",
-          inline=False
-        )
-        embed.set_footer(
-          text="Developed by Jakob.AIO"
-        )
+          embed.set_author(
+            name="Restocks Scraper",
+            url="https://twitter.com/jakobaio",
+            icon_url= "https://www.reklamation24.de/img/content/marken/original_6710_1.gif"
+            )
+          embed.set_thumbnail(
+            url=restocks_image_output
+          )
+          embed.add_field(
+            name="Prices:",
+            value=restocks_sizes_output
+          )
+          embed.add_field(
+            name="Open Product on:",
+            value=f"[[StockX]]({stockx_url_output})      " f"[[Sneakit]]({sneakit_url_output})      " f"[[Restocks]]({restocks_product_output})      " f"[[Hypeboost]]({hypeboost_url_output})      ",
+            inline=False
+          )
+          embed.set_footer(
+            text="Developed by Jakob.AIO"
+          )
 
-        await message.channel.send(embed=embed) #sends sizes in discord chat
-        print('Scraping Successful!')
+          await message.channel.send(embed=embed) #sends sizes in discord chat
+          print('Scraping Successful!')
 
 
 bot.run(TOKEN)
