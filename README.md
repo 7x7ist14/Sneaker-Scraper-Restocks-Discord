@@ -21,7 +21,7 @@ After that go to https://chromedriver.chromium.org/downloads and download the ri
 If your version isn't the same as in the Folder, just download your version and replace the chrome-driver file.
 In the folder is the version: ChromeDriver 110.0.5481.77
 
-2. Open the "Config" file and input your Discord Bot Token.
+2. Open the "Config" file and input your Discord Bot Token and the name of the discord channel were you want to use the scraper in.
 
 3. Open and run the "discord_embed" file. (best for this is VS-Code in my opinion)
 
