@@ -130,13 +130,12 @@ def hypeboost_product_url(SKU):
     #print("Scraped Hypeboost URL:", url2)
     return url2
 
-def sneakit_product_url(SKU):
-  raw = sneakit_info(SKU)
-  slug = raw['data'][0]['slug']
-  p_url = "https://sneakit.com/product/" + slug
-  print("Scraped Sneakit Product URL:" + p_url)
-  return p_url
-
+def sneakit_url(SKU):
+  produkt_code = SKU
+  global url
+  url = f"https://sneakit.com/search/products/{produkt_code}?query={produkt_code}&page=1"
+  print("Scraped Sneakit URL!", url)
+  return url
 
 def sneakit_info(SKU):
   sneakit_url_r = sneakit_url(SKU)
@@ -146,9 +145,35 @@ def sneakit_info(SKU):
   print("Scraped Sneakit info!")
   return output
 
-def sneakit_url(SKU):
-  produkt_code = SKU
-  global url
-  url = f"https://sneakit.com/search/products/{produkt_code}?query={produkt_code}&page=1"
-  print("Scraped Sneakit URL!", url)
-  return url
+def sneakit_product_url(SKU):
+  raw = sneakit_info(SKU)
+  slug = raw['data'][0]['slug']
+  p_url = "https://sneakit.com/product/" + slug
+  print("Scraped Sneakit Product URL:" + p_url)
+  return p_url
+
+def product_goat(SKU):
+  url = "https://ac.cnstrc.com/search/" + SKU
+  querystring = {"c":"ciojs-client-2.29.12","key":"key_XT7bjdbvjgECO5d8","i":"f8b0a5f2-bc6b-4626-b980-74bbc3b45edf","s":"1","num_results_per_page":"25","_dt":"1678011980760"}
+
+  payload = ""
+  headers = {
+      "authority": "ac.cnstrc.com",
+      "accept": "*/*",
+      "accept-language": "en-DE,en;q=0.9",
+      "origin": "https://www.goat.com",
+      "sec-ch-ua": "^\^Chromium^^;v=^\^110^^, ^\^Not",
+      "sec-ch-ua-mobile": "?0",
+      "sec-ch-ua-platform": "^\^Windows^^",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "cross-site",
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36"
+  }
+
+  response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
+  output = json.loads(response.text)
+  output_slug = output['response']['results'][0]['data']['slug']
+  product_url = "https://www.goat.com/sneakers/" + output_slug
+  print("Scraped GOAT product URL!")
+  return product_url
