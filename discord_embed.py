@@ -75,7 +75,7 @@ async def on_message(message):
           inline=False
           )
           embed.set_footer(
-            text=f"Developed by JakobAIO      |      Hypeboost-Payout      |      {datetime.datetime.now().strftime('%H:%M:%S')}"
+            text=f"Developed by JakobAIO      |      Restocks-Scraper      |      {datetime.datetime.now().strftime('%H:%M:%S')}"
           )
 
           await message.channel.send(embed=embed) #sends sizes in discord chat
