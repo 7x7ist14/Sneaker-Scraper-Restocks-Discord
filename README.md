@@ -26,7 +26,8 @@ In the folder is the version: ChromeDriver 110.0.5481.77
 3. Open and run the "discord_embed" file. (best for this is VS-Code in my opinion)
 
 4. Write the keyword ($restocks) + SKU in your discord server.
-   format: $restocks SKU --> (example: $scrape CW1590-100)
+   format: $restocks SKU --> (example: $restocks CW1590-100)
+   --> you can also change the command or the prefix in the congfig file if you want to.
 
 
 The Scraper will now send you all listed sizes and their prices in the discord channel.
@@ -36,4 +37,8 @@ At the bottom of the discord message you can also find the StockX and Restocks P
 # Return Message Example:
 The return message looks like this:
 
-![image](https://user-images.githubusercontent.com/103487648/223551832-0661f335-4eb0-4756-9589-d2adcc6f1ef4.png)
+![image](https://user-images.githubusercontent.com/103487648/224496453-2d097137-9f63-4883-9121-5df2e747f17b.png)
+
+
+![image](https://user-images.githubusercontent.com/103487648/224496494-7232645e-7b7f-4a28-ae93-3db19197a7a4.png)
+
