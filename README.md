@@ -35,7 +35,7 @@ At the bottom of the discord message you can also find the StockX and Restocks P
 
 # Return Message Example:
 The return message looks like this:
-
+sneakit url is removed from scraper atm.
 
 ![image](https://user-images.githubusercontent.com/103487648/224496628-a707a7e8-7b86-4b14-a15e-b588e6d5f28a.png)
 
