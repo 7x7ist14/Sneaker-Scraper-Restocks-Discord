@@ -23,19 +23,6 @@ def restocks_url(SKU):
   except:
     return ("https://restocks.net/de")
 
-def format_list(price_list):
-    try:
-      result = ""
-      for i in range(len(price_list)):
-          if i % 2 == 0:
-              result += price_list[i] + ": "
-          else:
-              result += price_list[i]
-              if i < len(price_list) - 1 and price_list[i+1] != "":
-                  result += "\n"
-      return result
-    except:
-      return ("Product not found!")
 
 def restocks_stock(SKU):
   try:
@@ -52,7 +39,6 @@ def restocks_stock(SKU):
     options.headless = True
     driver = webdriver.Chrome(options=options)
     driver.get(product_url)
-
     cookies = driver.find_element(by=By.ID, value='save__first__localization__button')
     cookies.click()
     time.sleep(2)
@@ -62,7 +48,6 @@ def restocks_stock(SKU):
     size_list = driver.find_element(by=By.CLASS_NAME, value='select__label')
     size_list.click()
     time.sleep(2)
-
     prices = driver.find_element(by=By.CLASS_NAME, value='select__size__list').text
     prices_replace = prices.replace(" ½", "½")
     prices_replace2 = prices_replace.replace("Notify me", "OOS!")
@@ -72,10 +57,16 @@ def restocks_stock(SKU):
 
     price_list = [item for item in price_list if item != 'Noch 1 auf Lager' and item != 'Noch 2 auf Lager']
 
-    formatted_list = format_list(price_list)
-
     driver.quit
-    return formatted_list
+    result = ""
+    for i in range(len(price_list)):
+        if i % 2 == 0:
+            result += price_list[i] + ": "
+        else:
+            result += price_list[i]
+            if i < len(price_list) - 1 and price_list[i+1] != "":
+                result += "\n"
+    return result
   except:
     return ("Product not found!")
 
